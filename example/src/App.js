@@ -1,10 +1,74 @@
-import React from 'react'
+import React from 'react';
+import cat1Img from './img/cat-694730_640.jpg';
+import cat2Img from './img/cat-2934720_640.jpg';
+import cat3Img from './img/kitty-2948404_640.jpg';
 
-import { ExampleComponent } from 'react-side-content-accordion'
-import 'react-side-content-accordion/dist/index.css'
+import {
+  Accordion,
+  AccordionSection,
+  AccordionSectionHeader,
+  AccordionSectionTextContent,
+  AccordionSideContentContainer,
+  AccordionSideContent,
+} from 'react-side-content-accordion';
+import 'react-side-content-accordion/dist/example.css';
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  return (
+    <Accordion>
+      <div className="accordion-sections">
+        <AccordionSection initiallyOpen>
+          <AccordionSectionHeader>Section 1</AccordionSectionHeader>
+          <AccordionSectionTextContent>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
+          </AccordionSectionTextContent>
+          <AccordionSideContent>
+            <img src={cat1Img} alt="cat" />
+          </AccordionSideContent>
+        </AccordionSection>
+        <AccordionSection>
+          <AccordionSectionHeader>Section 2</AccordionSectionHeader>
+          <AccordionSectionTextContent>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
+          </AccordionSectionTextContent>
+          <AccordionSideContent>
+            <img src={cat2Img} alt="cat" />
+          </AccordionSideContent>
+        </AccordionSection>
+        <AccordionSection>
+          <AccordionSectionHeader>Section 3</AccordionSectionHeader>
+          <AccordionSectionTextContent>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
+          </AccordionSectionTextContent>
+          <AccordionSideContent>
+            <img src={cat3Img} alt="cat" />
+          </AccordionSideContent>
+        </AccordionSection>
+      </div>
+      <AccordionSideContentContainer />
+    </Accordion>
+  );
+};
 
-export default App
+export default App;
