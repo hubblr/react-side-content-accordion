@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 const AccordionSectionContext = createContext({
   uuid: undefined,
-  isOpen: false,
+  isExpanded: false,
 });
 
 export default AccordionSectionContext;

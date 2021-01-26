@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 const AccordionContext = createContext({
-  openSections: [],
+  expandedSections: [],
   changeSectionStatus: () => {},
   sideContentMap: {},
   addSideContentForSection: () => {},

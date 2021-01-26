@@ -13,8 +13,7 @@ function AccordionSideContent({ children }) {
   const { uuid } = useContext(AccordionSectionContext);
   // subscribe the side content to the main accordion state
   useEffect(() => {
-    const sideContent = <div className="side-content">{children}</div>;
-    addSideContentForSection(sideContent, uuid);
+    addSideContentForSection(children, uuid);
   }, [children]);
   return null;
 }

@@ -6,7 +6,7 @@ import cat3Img from './img/kitty-2948404_640.jpg';
 import {
   Accordion,
   AccordionSection,
-  AccordionSectionHeader,
+  AccordionSectionHeading,
   AccordionSectionTextContent,
   AccordionSideContentContainer,
   AccordionSideContent,
@@ -17,49 +17,35 @@ const App = () => {
   return (
     <Accordion>
       <div className="accordion-sections">
-        <AccordionSection initiallyOpen>
-          <AccordionSectionHeader>Section 1</AccordionSectionHeader>
+        <AccordionSection initiallyExpanded>
+          <AccordionSectionHeading>Section 1</AccordionSectionHeading>
           <AccordionSectionTextContent>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
             accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-            amet.
+            sanctus est Lorem ipsum dolor sit amet.
           </AccordionSectionTextContent>
           <AccordionSideContent>
             <img src={cat1Img} alt="cat" />
           </AccordionSideContent>
         </AccordionSection>
         <AccordionSection>
-          <AccordionSectionHeader>Section 2</AccordionSectionHeader>
+          <AccordionSectionHeading>Section 2</AccordionSectionHeading>
           <AccordionSectionTextContent>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-            amet.
+            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+            sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+            magna aliquyam erat, sed diam voluptua.
           </AccordionSectionTextContent>
           <AccordionSideContent>
             <img src={cat2Img} alt="cat" />
           </AccordionSideContent>
         </AccordionSection>
         <AccordionSection>
-          <AccordionSectionHeader>Section 3</AccordionSectionHeader>
+          <AccordionSectionHeading>Section 3</AccordionSectionHeading>
           <AccordionSectionTextContent>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-            amet.
+            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+            sea takimata sanctus est Lorem ipsum dolor sit amet.
           </AccordionSectionTextContent>
           <AccordionSideContent>
             <img src={cat3Img} alt="cat" />

@@ -6,41 +6,47 @@ let persistentSideContentMap = {};
 /** Outermost container of the accordion. Manages the state of sections which is shared through the
  * AccordionContext. Can contain (at any depth) AccordionSection and AccordionSideContentContainer
  * components. */
-function Accordion({ children, className, allowMultipleOpen, allowAllCollapsed }) {
+function Accordion({ children, className, allowMultipleExpanded, allowAllCollapsed }) {
   // control state of content: which sections are open & what site content is displayed
-  const [openSections, setOpenSections] = useState([]);
+  const [expandedSections, setExpandedSections] = useState([]);
   const [sideContentMap, setSideContentMap] = useState(persistentSideContentMap);
   // update side content map for next render iteration
   persistentSideContentMap = { ...sideContentMap };
 
   // callbacks to open/close sections
-  const addOpenSection = useCallback(
+  const addExpandedSection = useCallback(
     (uuid, clear = false) => {
-      const newOpenSections = clear ? [] : openSections.slice();
-      newOpenSections.push(uuid);
-      setOpenSections(newOpenSections);
+      const newExpandedSections = clear ? [] : expandedSections.slice();
+      newExpandedSections.push(uuid);
+      setExpandedSections(newExpandedSections);
     },
-    [openSections]
+    [expandedSections]
   );
 
-  const removeOpenSection = useCallback(
+  const removeExpandedSection = useCallback(
     (remUuid) => {
-      setOpenSections(openSections.filter((uuid) => uuid !== remUuid));
+      setExpandedSections(expandedSections.filter((uuid) => uuid !== remUuid));
     },
-    [openSections]
+    [expandedSections]
   );
 
   const changeSectionStatus = useCallback(
     (uuid) => {
-      if (openSections.includes(uuid)) {
-        if (allowAllCollapsed || openSections.length > 1) {
-          removeOpenSection(uuid);
+      if (expandedSections.includes(uuid)) {
+        if (allowAllCollapsed || expandedSections.length > 1) {
+          removeExpandedSection(uuid);
         }
       } else {
-        addOpenSection(uuid, !allowMultipleOpen);
+        addExpandedSection(uuid, !allowMultipleExpanded);
       }
     },
-    [addOpenSection, allowAllCollapsed, allowMultipleOpen, openSections, removeOpenSection]
+    [
+      addExpandedSection,
+      allowAllCollapsed,
+      allowMultipleExpanded,
+      expandedSections,
+      removeExpandedSection,
+    ]
   );
 
   // callback to let AccordionSideContent fill children into AccordionSideContent container
@@ -59,7 +65,7 @@ function Accordion({ children, className, allowMultipleOpen, allowAllCollapsed }
   return (
     <AccordionContext.Provider
       value={{
-        openSections,
+        expandedSections,
         changeSectionStatus,
         sideContentMap,
         addSideContentForSection,
@@ -73,13 +79,13 @@ function Accordion({ children, className, allowMultipleOpen, allowAllCollapsed }
 Accordion.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  allowMultipleOpen: PropTypes.bool,
+  allowMultipleExpanded: PropTypes.bool,
   allowAllCollapsed: PropTypes.bool,
 };
 
 Accordion.defaultProps = {
   className: '',
-  allowMultipleOpen: false,
+  allowMultipleExpanded: false,
   allowAllCollapsed: false,
 };
 

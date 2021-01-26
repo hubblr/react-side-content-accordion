@@ -5,11 +5,11 @@ import useExpand from '../hooks/useExpand';
 import useCollapse from '../hooks/useCollapse';
 
 /** The text within an accordion section which is expanded/collapsed on trigger of a related
- * AccordionSectionHeader element. To be contained somewhere beneath an AccordionSection
+ * AccordionSectionHeading element. To be contained somewhere beneath an AccordionSection
  * component. */
 function AccordionSectionTextContent({ children, className }) {
-  const { isOpen } = useContext(AccordionSectionContext);
-  const [heightStyle, setHeightStyle] = useState(isOpen ? null : '0px');
+  const { isExpanded } = useContext(AccordionSectionContext);
+  const [heightStyle, setHeightStyle] = useState(isExpanded ? null : '0px');
 
   // track content DOM element to read its scroll height
   const contentRef = useRef();
@@ -27,19 +27,19 @@ function AccordionSectionTextContent({ children, className }) {
   // perform transition every time open status changes
   useEffect(() => {
     if (el) {
-      if (!isOpen) {
+      if (!isExpanded) {
         collapse();
       } else {
         expand();
       }
     }
-  }, [collapse, el, expand, isOpen]);
+  }, [collapse, el, expand, isExpanded]);
 
   return (
     <div
       style={{ height: heightStyle }}
       ref={contentRef}
-      className={`accordion-text-content ${className}`}
+      className={`accordion-section-text-content ${className}`}
     >
       {children}
     </div>

@@ -5,13 +5,13 @@ import AccordionSectionContext from '../context/AccordionSectionContext';
 
 /** Button to switch open/closed state of an accordion section. To be contained somewhere beneath an
  * AccordionSection component. */
-function AccordionSectionHeader({ children, className }) {
+function AccordionSectionHeading({ children, className }) {
   const { changeSectionStatus } = useContext(AccordionContext);
   const { uuid } = useContext(AccordionSectionContext);
 
   return (
     <button
-      className={`accordion-heading ${className}`}
+      className={`accordion-section-heading ${className}`}
       type="button"
       onClick={() => changeSectionStatus(uuid)}
     >
@@ -20,13 +20,13 @@ function AccordionSectionHeader({ children, className }) {
   );
 }
 
-AccordionSectionHeader.propTypes = {
+AccordionSectionHeading.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
-AccordionSectionHeader.defaultProps = {
+AccordionSectionHeading.defaultProps = {
   className: '',
 };
 
-export default AccordionSectionHeader;
+export default AccordionSectionHeading;

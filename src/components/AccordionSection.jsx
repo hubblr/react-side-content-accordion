@@ -6,30 +6,31 @@ import AccordionSectionContext from '../context/AccordionSectionContext';
 
 /** Container for the content of one accordion section. Passes in an AccordionSectionContext the
  * unique ID of this section and information whether the section is currently regarded as 'open'
- * or 'closed'. Components which may consume this context are AccordionSectionHeader and
+ * or 'closed'. Components which may consume this context are AccordionSectionHeading and
  * AccordionSectionTextContent components. To be contained somewhere beneath the main Accordion
  * component */
-function AccordionSection({ children, className, initiallyOpen }) {
+function AccordionSection({ children, className, initiallyExpanded }) {
   // generate a unique uuid for this section which is reused on every render
   const uuidRef = useRef(uuidv4());
   const uuid = uuidRef.current;
 
   // check if section is considered open (passed in item context)
   const firstRenderRef = useRef(true);
-  const { openSections, changeSectionStatus } = useContext(AccordionContext);
+  const { expandedSections, changeSectionStatus } = useContext(AccordionContext);
   // second condition here allows initial render of open section without transition effects
-  const isOpen = openSections.includes(uuid) || (firstRenderRef.current && initiallyOpen);
+  const isExpanded =
+    expandedSections.includes(uuid) || (firstRenderRef.current && initiallyExpanded);
 
   // after first render: mark section as open if necessary
   useEffect(() => {
-    if (initiallyOpen) {
+    if (initiallyExpanded) {
       changeSectionStatus(uuid);
     }
     firstRenderRef.current = false;
   }, []);
 
   return (
-    <AccordionSectionContext.Provider value={{ isOpen, uuid }}>
+    <AccordionSectionContext.Provider value={{ isExpanded, uuid }}>
       <div className={`accordion-section ${className}`}>{children}</div>
     </AccordionSectionContext.Provider>
   );
@@ -38,12 +39,12 @@ function AccordionSection({ children, className, initiallyOpen }) {
 AccordionSection.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  initiallyOpen: PropTypes.bool,
+  initiallyExpanded: PropTypes.bool,
 };
 
 AccordionSection.defaultProps = {
   className: '',
-  initiallyOpen: false,
+  initiallyExpanded: false,
 };
 
 export default AccordionSection;
