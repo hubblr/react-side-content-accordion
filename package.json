@@ -1,11 +1,17 @@
 {
   "name": "@hubblr/react-side-content-accordion",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React accordion component which display side content depending on currently expanded sections.",
   "author": "hubblr",
   "license": "MIT",
   "homepage": "https://hubblr.github.io/react-side-accordion",
   "repository": "hubblr/react-side-content-accordion",
+  "keywords": [
+    "react",
+    "component",
+    "accordion",
+    "side content"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
