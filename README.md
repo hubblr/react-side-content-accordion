@@ -44,7 +44,7 @@ class Example extends Component {
     return (
       <Accordion>
         <div className="accordion-sections">
-          <AccordionSection initiallyOpen>
+          <AccordionSection initiallyExpanded>
             <AccordionSectionHeading>Section 1</AccordionSectionHeading>
             <AccordionSectionTextContent>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
@@ -86,7 +86,7 @@ class Example extends Component {
 
 ## Components
 
-The provided components can be divided into two distinct categories: Wrapper components that manage the state of the accordion ([Accordion](#accordion), [AccordionSection](#accordionsection)) and presentational components placed inside these wrappers ([AccordionSectionHeading](#accordionsectionheading), [AccordionSectionTextContent](#accordionsectiontextcontent), [AccordionSideContentContainer](#accordionsidecontentcontainer), [AccordionSideContent](#accordionsidecontent)) to which the accordion state is passed via [React Contexts](#context). Each component adds to its top level HTML element its name as a css class in kebab-case (e.g., the AccordionSection component surrounds its content with a <div> element with the css class 'accordion-section') to enable easy [styling](*styles). Additionally, each component also takes a ```className``` prop to allow for custom css classes.
+The provided components can be divided into two distinct categories: Wrapper components that manage the state of the accordion ([Accordion](#accordion), [AccordionSection](#accordionsection)) and presentational components placed inside these wrappers ([AccordionSectionHeading](#accordionsectionheading), [AccordionSectionTextContent](#accordionsectiontextcontent), [AccordionSideContent](#accordionsidecontent), [AccordionSideContentContainer](#accordionsidecontentcontainer)) to which the accordion state is passed via [React Contexts](#context). Each component adds to its top level HTML element its name as a css class in kebab-case (e.g., the AccordionSection component surrounds its content with a \<div> element with the css class 'accordion-section') to enable easy [styling](#styles). Additionally, each component also takes a ```className``` prop to allow for custom css classes.
 
 ### Accordion
 
@@ -95,7 +95,7 @@ The outermost wrapper of the accordion. Manages the state of sections and the cu
 **Additional Props**
 
 | Prop                  | Type          | Optional           | Description                                                                       |
-|-----------------------|---------------|--------------------|-----------------------------------------------------------------------------------|
+|-----------------------|---------------|:------------------:|-----------------------------------------------------------------------------------|
 | allowMultipleExpanded | ```boolean``` | :heavy_check_mark: | Whether multiple sections can be expanded at the same time. Default: ```false```. |
 | allowAllCollapsed     | ```boolean``` | :heavy_check_mark: | Whether all sections can be collapsed at the same time. Default: ```false```.     |
 
@@ -108,7 +108,7 @@ An expandable section of the accordion. Inside, you may place components that al
 **Additional Props**
 
 | Prop              | Type          | Optional           | Description                                                                           |
-|-------------------|---------------|--------------------|---------------------------------------------------------------------------------------|
+|-------------------|---------------|:------------------:|---------------------------------------------------------------------------------------|
 | initiallyExpanded | ```boolean``` | :heavy_check_mark: | Whether the section content should be expanded on first render. Default: ```false```. |
 
 ### AccordionSectionHeading
@@ -121,11 +121,11 @@ The text of a section. Expands/contracts based on the given expansion status of 
 
 ### AccordionSideContentContainer
 
-A container in which all [AccordionSideContent](#accordionsidecontent) components contained within all [AccordionSection](#accordionsection) components are rendered. Individual elements are wrapped in a container with additional css class 'active'/'inactive' depending on the expansion state of the section. Be careful: [AccordionSideContent](#accordionsidecontent) components are not placed directly within this component.
+A container in which all [AccordionSideContent](#accordionsidecontent) components contained within all [AccordionSection](#accordionsection) components are rendered. Individual elements are wrapped in a container with additional css class 'active'/'inactive' depending on the expansion state of the section. Be careful: [AccordionSideContent](#accordionsidecontent) components are not placed directly within this component. Place within the [Accordion](#accordion) component.
 
 ### AccordionSideContent
 
-The content to be displayed to the side of the accordion if the parent section is currently expanded. Place within the [AccordionSection](#accordionsection) the side content is semantically related to. Will be rendered within the [AccordionSideContentContainer](#accordionsidecontentcontainer).
+The content to be displayed to the side of the accordion if the parent section is currently expanded. Place within the [AccordionSection](#accordionsection) the side content is semantically related to. The content of this component will be wrapped and rendered within the [AccordionSideContentContainer](#accordionsidecontentcontainer).
 
 ## Context
 
@@ -151,13 +151,19 @@ React Context to be consumed by the children of a section. Passes the unique ID 
 
 ## Styles
 
+**Quick Start**
+
 To quickly try out this component with some simple transition animations like in the [example above](#example), you may just import the included example styles:
 
 ```jsx
 import 'react-side-content-accordion/dist/example.css';
 ```
 
-For custom styling, you can add your own class names to components as you see fit or base your styles on the class names used by the components. If you are using [AccordionSectionTextContent](#accordionsectiontextcontent), you likely want to include ```overflow: hidden;```. You likely also want to set ```opacity: 0;``` for inactive side content (as by default, all side content is rendered within the [AccordionSideContentContainer](#accordionsidecontentcontainer)).
+**Custom Styling**
+
+For custom styling, you can add your own class names to components as you see fit or base your styles on the class names used by the components.
+
+Based on the way the components work internally, there are some css rules you likely want to adopt in any case. As such, if you are using [AccordionSectionTextContent](#accordionsectiontextcontent), you should include ```overflow: hidden;```, as otherwise height based contraction of sections will not work. You should also set ```opacity: 0;``` for inactive side content, as by default, all side content is rendered within the [AccordionSideContentContainer](#accordionsidecontentcontainer). Both these rules are set in the example stylesheet which can be used as initial orientation here.
 
 ## License
 

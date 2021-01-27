@@ -7,7 +7,7 @@ let persistentSideContentMap = {};
  * AccordionContext. Can contain (at any depth) AccordionSection and AccordionSideContentContainer
  * components. */
 function Accordion({ children, className, allowMultipleExpanded, allowAllCollapsed }) {
-  // control state of content: which sections are open & what site content is displayed
+  // control state of content: which sections are open & what side content is displayed
   const [expandedSections, setExpandedSections] = useState([]);
   const [sideContentMap, setSideContentMap] = useState(persistentSideContentMap);
   // update side content map for next render iteration
